@@ -66,9 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // //2. try and make one at time
-  // const changeLights = () => {
-  //   turnOff(clearLights);
-  // };
 
   //make buttons do stuff
 
