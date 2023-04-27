@@ -32,15 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const stopLight = document.querySelector(".light.stop");
   const clearLights = [stopLight, cautionLight, goLight];
 
-  //make all go off?
-
   const live = "on";
-
-  const turnOff = (clearLights) => {
-    for (const clearLight of clearLights) {
-      clearLight.classList.remove(live);
-    }
-  };
 
   // On mouseover/mouseout
 
@@ -67,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // //2. try and make one at time
 
+  const turnOff = (clearLights) => {
+    for (const clearLight of clearLights) {
+      clearLight.classList.remove(live);
+    }
+  };
+
   //make buttons do stuff
 
   goButton.addEventListener("click", () => {
@@ -84,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
     stopLight.classList.add("on");
   });
 
-  //clear lights
+  //clear lights -
+
   clearButton.addEventListener("click", () => {
     turnOff(clearLights);
   });
