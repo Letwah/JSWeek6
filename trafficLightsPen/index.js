@@ -26,11 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const stopButton = document.querySelector("button.stop");
   const clearButton = document.querySelector("button.clear");
 
+  //auto buttons
+
+  const aGoButton = document.querySelector("button.aGo");
+  const aStopButton = document.querySelector("button.aStop");
+
   //lights here
   const goLight = document.querySelector(".light.go");
   const cautionLight = document.querySelector(".light.caution");
   const stopLight = document.querySelector(".light.stop");
-  const clearLights = [stopLight, cautionLight, goLight];
+  const allLights = [stopLight, cautionLight, goLight];
 
   const live = "on";
 
@@ -59,32 +64,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // //2. try and make one at time
 
-  const turnOff = (clearLights) => {
-    for (const clearLight of clearLights) {
-      clearLight.classList.remove(live);
+  const turnOff = (allLights) => {
+    for (const allLight of allLights) {
+      allLight.classList.remove(live);
     }
   };
 
   //make buttons do stuff
 
   goButton.addEventListener("click", () => {
-    turnOff(clearLights);
+    turnOff(allLights);
     goLight.classList.add("on");
   });
 
   cautionButton.addEventListener("click", () => {
-    turnOff(clearLights);
+    turnOff(allLights);
     cautionLight.classList.add("on");
   });
 
   stopButton.addEventListener("click", () => {
-    turnOff(clearLights);
+    turnOff(allLights);
     stopLight.classList.add("on");
   });
 
-  //clear lights -
+  //clear all the lights -
 
   clearButton.addEventListener("click", () => {
-    turnOff(clearLights);
+    turnOff(allLights);
+  });
+
+  // order for lights
+  const order = [[stopLight], [cautionLight], [goLight], [cautionLight]];
+
+  let i = 0;
+
+  let timer = null;
+  const gap = 2;
+
+  const changeLights = () => {
+    turnOff(allLights); // clear lights
+
+    const currentLights = order[i];
+    log(currentLights);
+
+    for (const light of currentLights) {
+      light.classList.add(live);
+      // loop them
+    }
+
+    if (i < order.length - 1) {
+      i += 1;
+    } else {
+      i = 0;
+    }
+  };
+
+  aGoButton.addEventListener("click", () => {
+    changeLights();
+    timer = setInterval(changeLights, gap * 1000);
+  });
+
+  aStopButton.addEventListener("click", () => {
+    turnOff(allLights);
+    stopLight.classList.add("on");
+    clearInterval(timer); ///NOT SURE HOW TO DO THIS>>>ASK JON//RUSSELL
+  });
+
+  clearButton.addEventListener("click", () => {
+    turnOff(allLights);
+    i = 0;
+    clearInterval(timer);
   });
 });
