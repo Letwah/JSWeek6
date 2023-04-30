@@ -14,3 +14,17 @@
 //focus 20:43
 //blur 20:45
 //currency stuff then on
+
+/*****NEXT LECTURE 27/4/23 ** */
+
+///forms making sure tgey are formatted right
+
+//use third pary library for third party
+//schema - 18;42
+
+//https://slides.com/jmsherry/javascript-in-the-browser?token=K-ZXPle0#/0/73
+
+//19:06 - third party libraries  https://slides.com/jmsherry/javascript-in-the-browser?token=K-ZXPle0#/0/74
+//insomnia - 19:12
+
+//post request - for banks 20:10
